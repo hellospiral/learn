@@ -1,9 +1,9 @@
-<h1>Lessons</h1>
+<h1>Lessons for <%= @section.name %></h1>
 
 <ul>
   <% @lessons.each do |lesson| %>
-    <li><%= link_to lesson.name, lesson_path(lesson) %></li>
+    <li><%= link_to lesson.name, section_lesson_path(lesson.section, lesson) %></li>
   <% end %>
 </ul>
 
-<%= link_to "Add a lesson", new_lesson_path %>
+<%= link_to "Add a lesson", new_section_lesson_path %>
