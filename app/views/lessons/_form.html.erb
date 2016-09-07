@@ -1,11 +1,13 @@
 <%= render "layouts/errors", :object => @lesson %>
 
+<div class="form-group">
 <%= form_for [@section, @lesson] do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, class: "form-control" %>
   <%= f.label :content %>
-  <%= f.text_field :content %>
+  <%= f.text_area :content, class: "form-control", size: "24x6" %>
   <%= f.label :number %>
-  <%= f.text_field :number %>
-  <%= f.submit %>
+  <%= f.text_field :number, class: "form-control", value: @lessonNumber %>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>
+</div>

@@ -14,4 +14,13 @@
   <% end %>
 <% end %>
 
-<p><%= link_to "Return to lessons", section_lessons_path(@lesson.section) %></p>
+<% if !@lesson.dumb %>
+  <%= form_for [@lesson.section, @lesson], :url => section_lesson_path, :html => {:moethd => :get} do |f| %>
+    <%= f.hidden_field :dumb, :value => !@lesson.dumb %>
+    <%= f.submit 'Flag this lesson as dumb', class: "btn btn-danger"%>
+  <% end %>
+<% else %>
+  <h4>This lesson is dumb</h4>
+<% end %>
+
+<p><%= link_to "Return to " + @lesson.section.name + " lessons", section_path(@lesson.section) %></p>

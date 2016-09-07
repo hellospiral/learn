@@ -2,9 +2,13 @@
 
 <% if @section.lessons.any? %>
   <h4>Lessons in this section:</h4>
-  <ul>
+  <ul class="list-group">
     <% @section.lessons.each do |lesson| %>
-      <li><%= link_to lesson.name, section_lesson_path(@section, lesson) %></li>
+      <li class="list-group-item"><%= lesson.number %>. <%= link_to lesson.name, section_lesson_path(@section, lesson) %>
+        <% if lesson.dumb %>
+          <img src="https://cdn4.iconfinder.com/data/icons/smiley-2/54/smiley-face-avatar-shock-stupid-128.png" height="20" width="20" alt="dumb guy face">
+        <% end %>
+      </li>
     <% end %>
   </ul>
 <% else %>

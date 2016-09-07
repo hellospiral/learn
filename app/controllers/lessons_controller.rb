@@ -1,9 +1,4 @@
 class LessonsController < ApplicationController
-  def index
-    @section = Section.find(params[:section_id])
-    @lessons = @section.lessons.all
-  end
-
   def show
     @lessons = Lesson.all
     @lesson = Lesson.find(params[:id])
@@ -11,6 +6,11 @@ class LessonsController < ApplicationController
 
   def new
     @section = Section.find(params[:section_id])
+    if @section.lessons.any?
+      @lessonNumber = @section.lessons.last.number + 1
+    else
+      @lessonNumber = 1
+    end
     @lesson = @section.lessons.new
   end
 
@@ -47,6 +47,6 @@ class LessonsController < ApplicationController
 
   private
   def lesson_params
-    params.require(:lesson).permit(:name, :content, :number)
+    params.require(:lesson).permit(:name, :content, :number, :dumb)
   end
 end

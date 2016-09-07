@@ -1,7 +1,9 @@
 <%= render "layouts/errors", :object => @section %>
 
-<%= form_for @section do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+<div class="form-group">
+  <%= form_for @section do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>
